@@ -9,13 +9,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <div class="weather-container">
+<div class="wrapper-container">
+    <div class="top-container">
         <h1>hi</h1>
+
 
     </div>
 
 
+    <div class="btm-container">
+
+        <div class="days-of-week">
+
+        </div>
+    </div>
+
+
+</div>
     
+
+<script>
+    const daysOfWeek = document.querySelector('.days-of-week');
+
+for (let i = 0; i < 7; i++) {
+    const dayDiv = document.createElement('div');
+    dayDiv.classList.add('day');
+
+    if(i === 0 ) dayDiv.innerHTML = '<h3>Sun</h3>';
+    else if(i === 1 ) dayDiv.innerHTML = '<h3>Mon</h3>';
+    else if(i === 2 ) dayDiv.innerHTML = '<h3>Tue</h3>';
+    else if(i === 3 ) dayDiv.innerHTML = '<h3>Wed</h3>';
+    else if(i === 4 ) dayDiv.innerHTML = '<h3>Thur</h3>';
+    else if(i === 5 ) dayDiv.innerHTML = '<h3>Fri</h3>';
+    else if(i === 6 ) dayDiv.innerHTML = '<h3>Sat</h3>';
+    daysOfWeek.appendChild(dayDiv);
+}
+</script>
 </body>
 </html>
