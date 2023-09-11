@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
 
-    <link rel="icon" type="image/x-icon" href="icons8-sun-color-favicons/Web/icons8-sun-color-32.png">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<div class="wrapper-container">
-    <div class="top-container">
-        <h1>hi</h1>
-
-
-    </div>
-
-
-    <div class="btm-container">
-
-        <div class="days-of-week">
-
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="icons8-sun-color-favicons/Web/icons8-sun-color-32.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper-container">
+      <div class="top-container">
+        <div class="weather-title-info">
+          <h1 class="weather-desc">Sunny</h1>
+          <h2 class="location">Orlando, Florida</h2>
         </div>
+        <div class="temp-container">
+          <h1 class="temp">75°</h1>
+          <img src="./weather_symbols/sun.png" class="weather-icon" />
+        </div>
+      </div>
+
+      <div class="btm-container">
+        <div class="days-of-week"></div>
+      </div>
     </div>
 
-
-</div>
-    
-
-<script>
-    const daysOfWeek = document.querySelector('.days-of-week');
-
-for (let i = 0; i < 7; i++) {
-    const dayDiv = document.createElement('div');
-    dayDiv.classList.add('day');
-
-    if(i === 0 ) dayDiv.innerHTML = '<h3>Sun</h3>';
-    else if(i === 1 ) dayDiv.innerHTML = '<h3>Mon</h3>';
-    else if(i === 2 ) dayDiv.innerHTML = '<h3>Tue</h3>';
-    else if(i === 3 ) dayDiv.innerHTML = '<h3>Wed</h3>';
-    else if(i === 4 ) dayDiv.innerHTML = '<h3>Thur</h3>';
-    else if(i === 5 ) dayDiv.innerHTML = '<h3>Fri</h3>';
-    else if(i === 6 ) dayDiv.innerHTML = '<h3>Sat</h3>';
-    daysOfWeek.appendChild(dayDiv);
-}
-</script>
-</body>
+    <script>
+        const daysOfWeek = document.querySelector(".days-of-week");
+      
+        for (let i = 0; i < 7; i++) {
+          const dayDiv = document.createElement("div");
+          dayDiv.classList.add("day");
+      
+          const dayName = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+          
+          // Create an <h3> element for the day name
+          const h3 = document.createElement("h3");
+          h3.textContent = dayName[i];
+          
+          // Create an <img> element for the sun image
+          const sunImage = document.createElement("img");
+          sunImage.src = "./weather_symbols/sun.png"; // Replace with the actual path or URL of your sun image
+          sunImage.alt = "Sun";
+          
+          // Append the <h3> and <img> elements to the dayDiv
+          dayDiv.appendChild(h3);
+          dayDiv.appendChild(sunImage);
+          
+          daysOfWeek.appendChild(dayDiv);
+        }
+      </script>
+  </body>
 </html>
