@@ -1,6 +1,6 @@
 * {
-    font-family: Arial, sans-serif;
-    font-weight: 600px;
+  font-family: Arial, sans-serif;
+  font-weight: 600px;
 }
 
 body {
@@ -8,8 +8,7 @@ body {
   color: white;
 }
 
-.top-container,
-.btm-container {
+.top-container {
   background-color: #69d9ff;
   margin-left: auto;
   margin-right: auto;
@@ -26,8 +25,16 @@ body {
 }
 
 .day {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 300px;
+  background-color: #69d9ff;
+  border-radius: 60px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .btm-container {
@@ -37,13 +44,9 @@ body {
   padding-bottom: 50px;
 }
 
-.days-of-week {
-  display: flex;
-}
-
-.day h3 {
+.day p {
   text-align: center;
-  margin-top: 0;
+  margin-top: 10px;
   font-size: 25px;
   margin-bottom: 0px;
 }
@@ -66,25 +69,65 @@ body {
 }
 
 .weather-desc {
-    font-size: 60px;
-    margin-bottom: 0px;
+  font-size: 60px;
+  margin-bottom: 0px;
 }
 
-.location  {
-    font-size: 35px;
-    color: rgb(230, 230, 230);
-    margin-bottom: 20px;
-    margin-top: 0px;
-    font-style: oblique;
+.location {
+  font-size: 35px;
+  color: rgb(230, 230, 230);
+  margin-bottom: 20px;
+  margin-top: 0px;
+  font-style: oblique;
 }
 
 .weather-icon {
-    height: 170px;
-    width: 170px;
-    }
+  height: 170px;
+  width: 170px;
+}
 
 .day img {
-    height: 100px;
-    width: auto;
-    padding-bottom: 10px;
+  height: 100px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.day .temp {
+  font-size: 45px;
+}
+
+.inputs {
+  display: flex;
+  background-color: #69d9ff;
+  width: fit-content;
+  border-radius: 60px;
+  padding: 20px;
+  padding-right: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+input {
+  border-radius: 60px;
+  height: 33px;
+  border-style: none;
+  margin-top: 15px;
+}
+
+.inputs p {
+  margin-left: 20px;
+  margin-right: 5px;
+  font-size: 30px;
+  margin-top: 15px;
+}
+
+button {
+  border-radius: 60px;
+  border-style: none;
+  color: white;
+  background-color: #065e79;
+  font-size: 25px;
+  height: 70px;
+  width: 120px;
+  margin-left: 10px;
 }
