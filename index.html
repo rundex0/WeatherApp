@@ -15,12 +15,12 @@
   <body>
     <div class="inputs">
       <p>Longitude</p>
-      <input type="text">
+      <input type="text" placeholder="Ex: -81.38"/>
       <p>Latitude</p>
-      <input type="text">
+      <input type="text" placeholder="Ex: 28.54"/>
       <button>Get Weather</button>
+      <button>Get Current Location</button>
     </div>
-
 
     <div class="wrapper-container">
       <div class="top-container">
@@ -31,6 +31,12 @@
         <div class="temp-container">
           <h1 class="temp">75°</h1>
           <img src="./weather_symbols/sun.png" class="weather-icon" />
+          <div class="main-data">
+            <p>Broken Clouds</p>
+            <p>Humidity: 70%</p>
+            <p>Dew Point: 10</p>
+          </div>
+          
         </div>
       </div>
 
@@ -61,43 +67,5 @@
         </div>
       </div>
     </div>
-
-    <!-- <script>
-        const daysOfWeek = document.querySelector(".days-of-week");
-        
-        // Get the current day as an index (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
-        const todayIndex = new Date().getDay();
-        
-        for (let i = 0; i < 7; i++) {
-          const dayDiv = document.createElement("div");
-          dayDiv.classList.add("day");
-      
-          const dayName = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-          
-          // Calculate the index for the day based on todayIndex
-          const dayIndex = (todayIndex + i) % 7;
-          
-          // Create an <h3> element for the day name
-          const h3 = document.createElement("h3");
-          
-          // Set the text content for the first day to "Today" and the rest to the day name
-          if (i === 0) {
-            h3.textContent = "Today";
-          } else {
-            h3.textContent = dayName[dayIndex];
-          }
-          
-          // Create an <img> element for the sun image
-          const sunImage = document.createElement("img");
-          sunImage.src = "./weather_symbols/sun.png"; // Replace with the actual path or URL of your sun image
-          sunImage.alt = "Sun";
-          
-          // Append the <h3> and <img> elements to the dayDiv
-          dayDiv.appendChild(h3);
-          dayDiv.appendChild(sunImage);
-          
-          daysOfWeek.appendChild(dayDiv);
-        }
-      </script> -->
   </body>
 </html>
