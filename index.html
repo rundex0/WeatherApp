@@ -15,11 +15,11 @@
   <body>
     <div class="inputs">
       <p>Longitude</p>
-      <input type="text" placeholder="Ex: -81.38"/>
+      <input type="text" placeholder="Ex: -81.38" id="lon"/>
       <p>Latitude</p>
-      <input type="text" placeholder="Ex: 28.54"/>
+      <input type="text" placeholder="Ex: 28.54" id="lat"/>
       <button>Get Weather</button>
-      <button>Get Current Location</button>
+      <button id="get-location">Get Current Location</button>
     </div>
 
     <div class="wrapper-container">
@@ -44,7 +44,6 @@
         <div class="day">
           <p>Monday</p>
           <img src="weather_symbols/sun.png" alt="" />
-
           <p class="temp">74°</p>
           <p>Broken Clouds</p>
           <p>Humidity: 70%</p>
@@ -60,12 +59,13 @@
         <div class="day">
           <p>Monday</p>
           <img src="weather_symbols/sun.png" alt="" />
-
           <p class="temp">74°</p>
           <p>Broken Clouds</p>
           <p>Humidity: 70%</p>
         </div>
       </div>
     </div>
+
+    <script src="server.js"></script>
   </body>
 </html>
