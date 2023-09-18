@@ -1,6 +1,7 @@
 const getCurrLoc = document.getElementById("get-location");
 const latEl = document.getElementById("lat");
 const lonEl = document.getElementById("lon");
+const weatherBtn = document.getElementById('get-weather');
 
 let location_timeout;
 
@@ -33,3 +34,34 @@ getCurrLoc.addEventListener("click", () => {
     geolocFail();
   }
 });
+
+
+
+
+function getWeather(ev) {
+    let lat  = latEl.value;
+    let lon = lonEl.value;
+    let lang = 'en';
+    let units = 'metric';
+    let key = 
+    let url = 'https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}';
+
+    fetch(url)
+    .then(resp => {
+        if(!resp.ok) throw Error(resp.statusText);
+        return resp.json();
+    })
+    .then(data => {
+        displayWeather(data);
+    })
+    .catch(console.err);
+
+}
+
+
+function displayWeather (resp) {
+    console.log(resp + "here");
+}
+
+
+weatherBtn.addEventListener('click', getWeather());
