@@ -3,23 +3,31 @@
   font-weight: 600px;
 }
 
+html{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-image: linear-gradient(#19c3fb, white);
-  background-repeat: repeat-x;
+  /* background-image: linear-gradient(#19c3fb, rgb(20, 87, 131)); */
+ background-image: url("./sun.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Prevent background from scrolling */
+  background-size: cover;
+  overflow-y: scroll;
   color: white;
-  margin: 10px 0px 10px 10px;
 }
 
 .top-container {
-  background-color: #69d9ff;
-  margin-left: auto;
-  margin-right: auto;
-  width: 800px;
+  backdrop-filter: blur(200px);
+  width: 45%;
   height: auto;
-  margin-top: 10px;
+  margin: 10px auto 20px auto;
   border-radius: 60px;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 
 .wrapper-container {
@@ -46,15 +54,10 @@ body {
   padding-bottom: 50px;
 }
 
-.day p {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 25px;
-  margin-bottom: 0px;
-}
+
 
 .temp-container {
-  width: fit-content;
+  display: flex;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -63,8 +66,9 @@ body {
 .temp {
   font-size: 150px;
   margin-top: 0px;
-  margin-bottom: 30px;
+  
   padding: 0 30px;
+  
 }
 
 .weather-title-info {
@@ -87,6 +91,8 @@ body {
 .weather-icon {
   height: 170px;
   width: 170px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .day img {
@@ -102,12 +108,15 @@ body {
 
 .inputs {
   display: flex;
-  background-color: #69d9ff;
+  margin-top: 50px;
   width: fit-content;
   border-radius: 60px;
   padding: 20px;
   padding-right: 30px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  backdrop-filter: blur(100px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 input {
@@ -152,4 +161,39 @@ button:active {
 
 .main-data p {
   font-size: 30px;
+}
+
+.main-data {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media screen and (max-width: 700px) {
+
+ 
+
+
+  .inputs {
+    flex-direction: column; /* Stack items vertically */
+     align-items: center; /* Center items horizontally */
+  }
+
+  input,
+  .inputs p,
+  button {
+    width: 100%; /* Take up full width */
+    margin-left: 0; /* Reset left margin */
+    margin-top: 10px; /* Add some spacing between items */
+  }
+
+  button {
+    margin-top: 20px; /* Adjust spacing for the button */
+  }
+}
+
+
+.make-column {
+  display: flex;
+  flex-direction: column;
 }

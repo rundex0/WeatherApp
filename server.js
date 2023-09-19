@@ -35,6 +35,24 @@ getCurrLoc.addEventListener("click", () => {
   }
 });
 
+
+function msToTime(unix_timestamp) {
+  const date = new Date(unix_timestamp * 1000);
+  // Hours part from the timestamp
+  let hours = date.getHours();
+  // Minutes part from the timestamp
+  const minutes = "0" + date.getMinutes();
+
+  if(hours > 12) hours -= 12;
+  
+  // Will display time in 10:30:23 format
+  const formattedTime = hours + ':' + minutes.substr(-2);
+  
+  console.log(formattedTime);
+
+  return formattedTime;
+}
+
 function getWeather(ev) {
   let lat = latEl.value;
   let lon = lonEl.value;
@@ -56,11 +74,24 @@ function getWeather(ev) {
 
 function displayWeather(resp) {
   const temp = Math.round(resp.main.temp);
-  const summary = resp.weather[0].description;
-  console.log(resp);
+  const summary =
+    resp.weather[0].description.charAt(0).toUpperCase() +
+    resp.weather[0].description.slice(1);
+  const humidity = resp.main.humidity;
+  const tempMin = Math.round(resp.main.temp_min);
+  const tempMax = Math.round(resp.main.temp_max);
+  const sunrise = msToTime(resp.sys.sunrise);
+  const sunset = msToTime(resp.sys.sunset);
 
-  document.querySelector(".temp").textContent = temp;
-  document.getElementById("weather-summary").textContent = summary;
+  document.querySelector(".temp").textContent = (temp + "°");
+  document.querySelector(".weather-desc").textContent = summary;
+  document.getElementById("weather-humidty").textContent =
+    "Humidty: " + humidity + "%";
+  document.getElementById("weather-high").textContent =
+    "High: " + tempMax + "°";
+  document.getElementById("weather-low").textContent = "Low: " + tempMin + "°";
+  document.getElementById("weather-sunrise").textContent = ("Sunrise: " + sunrise + "am ☀️");
+  document.getElementById("weather-sunset").textContent = ("Sunset: " + sunset + "pm 🌙");
 }
 
 weatherBtn.addEventListener("click", getWeather);
