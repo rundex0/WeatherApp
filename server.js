@@ -2,7 +2,7 @@ const getCurrLoc = document.getElementById("get-location");
 const latEl = document.getElementById("lat");
 const lonEl = document.getElementById("lon");
 const weatherBtn = document.getElementById("get-weather");
-import { key } from './config.js';
+import { key } from "./config.js";
 
 let location_timeout;
 
@@ -55,21 +55,12 @@ function getWeather(ev) {
 }
 
 function displayWeather(resp) {
-
   const temp = Math.round(resp.main.temp);
   const summary = resp.weather[0].description;
   console.log(resp);
 
-  document.querySelector('.temp').textContent = temp;
-  document.getElementById('weather-summary').textContent = summary;
-
-
-
-
-
-
-
-
+  document.querySelector(".temp").textContent = temp;
+  document.getElementById("weather-summary").textContent = summary;
 }
 
 weatherBtn.addEventListener("click", getWeather);
