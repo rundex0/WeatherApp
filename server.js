@@ -11,6 +11,28 @@ function geolocFail() {
   clearTimeout(location_timeout); // Clear the timeout if geolocation fails
 }
 
+function capitalizeWords(str) {
+  // Split the string into words using a space as the separator
+  const words = str.split(' ');
+
+  // Create an array to store the capitalized words
+  const capitalizedWords = [];
+
+  // Iterate over each word
+  for (const word of words) {
+    // Capitalize the first character of the word and concatenate the rest
+    const capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
+
+    // Push the capitalized word to the array
+    capitalizedWords.push(capitalizedWord);
+  }
+
+  // Join the capitalized words back into a single string with spaces
+  const result = capitalizedWords.join(' ');
+
+  return result;
+}
+
 getCurrLoc.addEventListener("click", () => {
   if (navigator.geolocation) {
     location_timeout = setTimeout(geolocFail, 10000);
@@ -75,14 +97,14 @@ function getWeather(ev) {
 function displayWeather(resp) {
   const temp = Math.round(resp.main.temp);
   const summary =
-    resp.weather[0].description.charAt(0).toUpperCase() +
-    resp.weather[0].description.slice(1);
+    capitalizeWords(resp.weather[0].description);
   const humidity = resp.main.humidity;
   const tempMin = Math.round(resp.main.temp_min);
   const tempMax = Math.round(resp.main.temp_max);
   const sunrise = msToTime(resp.sys.sunrise);
   const sunset = msToTime(resp.sys.sunset);
-
+  const city = resp.name;
+console.log(resp);
   document.querySelector(".temp").textContent = (temp + "°");
   document.querySelector(".weather-desc").textContent = summary;
   document.getElementById("weather-humidty").textContent =
@@ -92,6 +114,7 @@ function displayWeather(resp) {
   document.getElementById("weather-low").textContent = "Low: " + tempMin + "°";
   document.getElementById("weather-sunrise").textContent = ("Sunrise: " + sunrise + "am ☀️");
   document.getElementById("weather-sunset").textContent = ("Sunset: " + sunset + "pm 🌙");
+  document.querySelector(".location").textContent = city;
 }
 
 weatherBtn.addEventListener("click", getWeather);
