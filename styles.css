@@ -65,6 +65,7 @@ body {
   font-size: 150px;
   margin-top: 0px;
   margin-bottom: 30px;
+  padding: 0 30px;
 }
 
 .weather-title-info {
@@ -145,7 +146,12 @@ button:hover {
   color: rgb(223, 223, 223);
 }
 
+button:active {
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+}
+
 .main-data p {
-  font-size: 25px;
+  font-size: 30px;
 }
 

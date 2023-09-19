@@ -1,13 +1,14 @@
 const getCurrLoc = document.getElementById("get-location");
 const latEl = document.getElementById("lat");
 const lonEl = document.getElementById("lon");
-const weatherBtn = document.getElementById('get-weather');
+const weatherBtn = document.getElementById("get-weather");
+import { key } from './config.js';
 
 let location_timeout;
 
 function geolocFail() {
-    alert("Enable GeoLocation Services");
-    clearTimeout(location_timeout); // Clear the timeout if geolocation fails
+  alert("Enable GeoLocation Services");
+  clearTimeout(location_timeout); // Clear the timeout if geolocation fails
 }
 
 getCurrLoc.addEventListener("click", () => {
@@ -29,39 +30,46 @@ getCurrLoc.addEventListener("click", () => {
         geolocFail();
       }
     );
-  }
-  else {
+  } else {
     geolocFail();
   }
 });
 
-
-
-
 function getWeather(ev) {
-    let lat  = latEl.value;
-    let lon = lonEl.value;
-    let lang = 'en';
-    let units = 'metric';
-    let key = 
-    let url = 'https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}';
+  let lat = latEl.value;
+  let lon = lonEl.value;
+  console.log(lat + "  " + lon);
+  let lang = "en";
+  let units = "imperial";
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}`;
 
-    fetch(url)
-    .then(resp => {
-        if(!resp.ok) throw Error(resp.statusText);
-        return resp.json();
+  fetch(url)
+    .then((resp) => {
+      if (!resp.ok) throw Error(resp.statusText);
+      return resp.json();
     })
-    .then(data => {
-        displayWeather(data);
+    .then((data) => {
+      displayWeather(data);
     })
-    .catch(console.err);
+    .catch(console.error);
+}
+
+function displayWeather(resp) {
+
+  const temp = Math.round(resp.main.temp);
+  const summary = resp.weather[0].description;
+  console.log(resp);
+
+  document.querySelector('.temp').textContent = temp;
+  document.getElementById('weather-summary').textContent = summary;
+
+
+
+
+
+
+
 
 }
 
-
-function displayWeather (resp) {
-    console.log(resp + "here");
-}
-
-
-weatherBtn.addEventListener('click', getWeather());
+weatherBtn.addEventListener("click", getWeather);
