@@ -13,7 +13,7 @@ function geolocFail() {
 
 function capitalizeWords(str) {
   // Split the string into words using a space as the separator
-  const words = str.split(' ');
+  const words = str.split(" ");
 
   // Create an array to store the capitalized words
   const capitalizedWords = [];
@@ -28,7 +28,7 @@ function capitalizeWords(str) {
   }
 
   // Join the capitalized words back into a single string with spaces
-  const result = capitalizedWords.join(' ');
+  const result = capitalizedWords.join(" ");
 
   return result;
 }
@@ -57,7 +57,6 @@ getCurrLoc.addEventListener("click", () => {
   }
 });
 
-
 function msToTime(unix_timestamp) {
   const date = new Date(unix_timestamp * 1000);
   // Hours part from the timestamp
@@ -65,11 +64,11 @@ function msToTime(unix_timestamp) {
   // Minutes part from the timestamp
   const minutes = "0" + date.getMinutes();
 
-  if(hours > 12) hours -= 12;
-  
+  if (hours > 12) hours -= 12;
+
   // Will display time in 10:30:23 format
-  const formattedTime = hours + ':' + minutes.substr(-2);
-  
+  const formattedTime = hours + ":" + minutes.substr(-2);
+
   console.log(formattedTime);
 
   return formattedTime;
@@ -82,7 +81,7 @@ function getWeather(ev) {
   let lang = "en";
   let units = "imperial";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}`;
-
+  
   fetch(url)
     .then((resp) => {
       if (!resp.ok) throw Error(resp.statusText);
@@ -92,28 +91,31 @@ function getWeather(ev) {
       displayWeather(data);
     })
     .catch(console.error);
+
+
 }
 
 function displayWeather(resp) {
   const temp = Math.round(resp.main.temp);
-  const summary =
-    capitalizeWords(resp.weather[0].description);
+  const summary = capitalizeWords(resp.weather[0].description);
   const humidity = resp.main.humidity;
   const tempMin = Math.round(resp.main.temp_min);
   const tempMax = Math.round(resp.main.temp_max);
   const sunrise = msToTime(resp.sys.sunrise);
   const sunset = msToTime(resp.sys.sunset);
   const city = resp.name;
-console.log(resp);
-  document.querySelector(".temp").textContent = (temp + "°");
+  console.log(resp);
+  document.querySelector(".temp").textContent = temp + "°";
   document.querySelector(".weather-desc").textContent = summary;
   document.getElementById("weather-humidty").textContent =
     "Humidty: " + humidity + "%";
   document.getElementById("weather-high").textContent =
     "High: " + tempMax + "°";
   document.getElementById("weather-low").textContent = "Low: " + tempMin + "°";
-  document.getElementById("weather-sunrise").textContent = ("Sunrise: " + sunrise + "am ☀️");
-  document.getElementById("weather-sunset").textContent = ("Sunset: " + sunset + "pm 🌙");
+  document.getElementById("weather-sunrise").textContent =
+    "Sunrise: " + sunrise + "am ☀️";
+  document.getElementById("weather-sunset").textContent =
+    "Sunset: " + sunset + "pm 🌙";
   document.querySelector(".location").textContent = city;
 }
 

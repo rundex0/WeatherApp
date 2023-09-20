@@ -1,19 +1,17 @@
 * {
   font-family: Arial, sans-serif;
-  font-weight: 600px;
+  font-weight: 600;
 }
 
-html{
-  height: 100%;
+html {
   margin: 0;
   padding: 0;
 }
 
 body {
-  /* background-image: linear-gradient(#19c3fb, rgb(20, 87, 131)); */
- background-image: url("./sun.jpg");
+  background-image: url("./sun.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Prevent background from scrolling */
+  background-attachment: fixed;
   background-size: cover;
   overflow-y: scroll;
   color: white;
@@ -21,13 +19,13 @@ body {
 
 .top-container {
   backdrop-filter: blur(200px);
-  width: 45%;
+  width: 800px;
   height: auto;
   margin: 10px auto 20px auto;
   border-radius: 60px;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+  margin-bottom: 100px;
 }
 
 .wrapper-container {
@@ -54,21 +52,16 @@ body {
   padding-bottom: 50px;
 }
 
-
-
 .temp-container {
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
 }
 
 .temp {
   font-size: 150px;
   margin-top: 0px;
-  
   padding: 0 30px;
-  
 }
 
 .weather-title-info {
@@ -139,7 +132,7 @@ button {
   border-radius: 60px;
   border-style: none;
   color: white;
-  background-color: #065e79;
+  background-color: #024a63;
   font-size: 25px;
   height: 70px;
   width: fit-content;
@@ -161,6 +154,8 @@ button:active {
 
 .main-data p {
   font-size: 30px;
+  width: 200px;
+  font-family: Arial, sans-serif;
 }
 
 .main-data {
@@ -168,30 +163,47 @@ button:active {
   margin-right: auto;
 }
 
-
-@media screen and (max-width: 700px) {
-
- 
-
-
+@media screen and (max-width: 1253px) {
   .inputs {
-    flex-direction: column; /* Stack items vertically */
-     align-items: center; /* Center items horizontally */
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   input,
-  .inputs p,
   button {
-    width: 100%; /* Take up full width */
-    margin-left: 0; /* Reset left margin */
-    margin-top: 10px; /* Add some spacing between items */
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .inputs p {
+    margin-bottom: 0;
   }
 
   button {
-    margin-top: 20px; /* Adjust spacing for the button */
+    margin-top: 20px;
   }
 }
 
+@media screen and (max-width: 1226px) {
+  .top-container {
+    width: 66%;
+    height: fit-content;
+  }
+}
+
+@media screen and (max-width: 756px) {
+  .temp-container {
+    flex-direction: column;
+  }
+
+  .temp {
+    text-align: center;
+  }
+}
 
 .make-column {
   display: flex;
