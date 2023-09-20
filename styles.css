@@ -154,7 +154,7 @@ button:active {
 
 .main-data p {
   font-size: 30px;
-  width: 200px;
+  width: 100%;
   font-family: Arial, sans-serif;
 }
 
