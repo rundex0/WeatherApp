@@ -1,2 +1,2 @@
 # WeatherApp
-Weather App project for the US.
+Weather App project for the World.
