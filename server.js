@@ -105,6 +105,18 @@ function getWeatherIcon(id) {
   }
 }
 
+function getWeatherBackground(id) {
+  if (id >= 200 && id < 233) return "./weather-backgrounds/thunderstorm.jpeg";
+  else if (id >= 801) return "./weather-backgrounds/clouds.jpg";
+  else if (id >= 500 && id < 532) return "./weather-backgrounds/rain.jpg";
+  else if (id === 800) return "./weather-backgrounds/sun.jpg";
+  else if (id >= 600 && id < 623) return "./weather-backgrounds/snow.jpg";
+  else {
+    console.log("No matching icon found for weather ID: " + id);
+    return "";
+  }
+}
+
 function displayWeather(resp) {
   const temp = Math.round(resp.main.temp);
   const summary = capitalizeWords(resp.weather[0].description);
@@ -116,6 +128,7 @@ function displayWeather(resp) {
   const city = resp.name;
   const weatherID = resp.weather[0].id;
   const weatherIcon = getWeatherIcon(weatherID);
+  const weatherBackground = getWeatherBackground(weatherID);
 
   console.log(resp);
   document.querySelector(".temp").textContent = temp + "°";
@@ -131,6 +144,7 @@ function displayWeather(resp) {
     "Sunset: " + sunset + "pm 🌙";
   document.querySelector(".location").textContent = city;
   document.querySelector(".weather-icon").src = weatherIcon;
+  document.querySelector("body").style.backgroundImage = `url(${weatherBackground})`;
 }
 
 weatherBtn.addEventListener("click", getWeather);

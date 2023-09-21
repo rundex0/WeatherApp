@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background-image: url("./sun.jpg");
+  background-image: url("./weather-backgrounds/sun.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
