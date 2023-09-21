@@ -81,7 +81,7 @@ function getWeather(ev) {
   let lang = "en";
   let units = "imperial";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}`;
-  
+
   fetch(url)
     .then((resp) => {
       if (!resp.ok) throw Error(resp.statusText);
@@ -91,8 +91,18 @@ function getWeather(ev) {
       displayWeather(data);
     })
     .catch(console.error);
+}
 
-
+function getWeatherIcon(id) {
+  if (id >= 200 && id < 233) return "./open-weather-symbols/thunderstorm.png";
+  else if (id >= 801) return "./open-weather-symbols/clouds.png";
+  else if (id >= 500 && id < 532) return "./open-weather-symbols/rain.png";
+  else if (id === 800) return "./open-weather-symbols/clear-sky-day.png";
+  else if (id >= 600 && id < 623) return "./open-weather-symbols/snow.png";
+  else {
+    console.log("No matching icon found for weather ID: " + id);
+    return "";
+  }
 }
 
 function displayWeather(resp) {
@@ -104,6 +114,9 @@ function displayWeather(resp) {
   const sunrise = msToTime(resp.sys.sunrise);
   const sunset = msToTime(resp.sys.sunset);
   const city = resp.name;
+  const weatherID = resp.weather[0].id;
+  const weatherIcon = getWeatherIcon(weatherID);
+
   console.log(resp);
   document.querySelector(".temp").textContent = temp + "°";
   document.querySelector(".weather-desc").textContent = summary;
@@ -117,6 +130,7 @@ function displayWeather(resp) {
   document.getElementById("weather-sunset").textContent =
     "Sunset: " + sunset + "pm 🌙";
   document.querySelector(".location").textContent = city;
+  document.querySelector(".weather-icon").src = weatherIcon;
 }
 
 weatherBtn.addEventListener("click", getWeather);
