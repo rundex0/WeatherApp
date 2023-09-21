@@ -97,7 +97,7 @@ function getWeatherIcon(id) {
   if (id >= 200 && id < 233) return "./open-weather-symbols/thunderstorm.png";
   else if (id >= 801) return "./open-weather-symbols/clouds.png";
   else if (id >= 500 && id < 532) return "./open-weather-symbols/rain.png";
-  else if (id === 800) return "./open-weather-symbols/clear-sky-day.png";
+  else if (id === 800) return "./open-weather-symbols/clear-sky.png";
   else if (id >= 600 && id < 623) return "./open-weather-symbols/snow.png";
   else {
     console.log("No matching icon found for weather ID: " + id);
