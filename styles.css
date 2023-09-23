@@ -119,6 +119,11 @@ input {
   margin-top: 15px;
   font-size: 20px;
   padding: 10px;
+  outline: none; /* Remove the default outline */
+}
+
+input:focus {
+  outline: 3px solid #024a63; /* Set the outline color to black when the input is in focus */
 }
 
 .inputs p {
