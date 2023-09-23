@@ -14,9 +14,23 @@
   </head>
   <body>
     <div class="inputs">
-      <p>Longitude</p>
+      <div class="intro-container">
+        <h1 id="intro-h1">Grab Weather By City Name or Coodinates</h1>
+        <div class="select-container">
+
+
+          <select id="locationType" class="custom-select">
+            <option value="city">Select Option</option>
+            <option value="city">City Name</option>
+            <option value="coordinates">Coordinates</option>
+          </select>
+          <button id="go-btn">Go</button>
+        </div>
+      </div>
+
+      <p class="inputsText">Longitude</p>
       <input type="text" placeholder="Ex: -81.38" id="lon" />
-      <p>Latitude</p>
+      <p class="inputsText">Latitude</p>
       <input type="text" placeholder="Ex: 28.54" id="lat" />
       <button id="get-location">Get Current Location</button>
       <button id="get-weather">Get Weather</button>
@@ -30,7 +44,10 @@
         </div>
         <div class="temp-container">
           <div class="make-column">
-            <img src="./open-weather-symbols/clear-sky.png" class="weather-icon" />
+            <img
+              src="./open-weather-symbols/clear-sky.png"
+              class="weather-icon"
+            />
             <h1 class="temp">75°</h1>
           </div>
           <div class="main-data">
@@ -42,10 +59,11 @@
           </div>
         </div>
       </div>
-      <div class="footer">
+
+      <!-- <div class="footer">
         <p>Created by Nathan Carney 2023</p>
 
-      </div>
+      </div> -->
     </div>
 
     <script src="server.js" type="module"></script>

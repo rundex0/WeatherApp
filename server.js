@@ -3,8 +3,25 @@ const latEl = document.getElementById("lat");
 const lonEl = document.getElementById("lon");
 const weatherBtn = document.getElementById("get-weather");
 import { key } from "./config.js";
-
 let location_timeout;
+const topContainer = document.querySelector(".top-container");
+const inputTextList = document.querySelectorAll(".inputsText");
+
+
+// initialize
+topContainer.classList.add("hidden");
+latEl.classList.add("hidden");
+lonEl.classList.add("hidden");
+weatherBtn.classList.add("hidden");
+getCurrLoc.classList.add("hidden");
+
+inputTextList.forEach(function(inputText) {
+  inputText.classList.add("hidden");
+});
+
+
+
+
 
 function geolocFail() {
   alert("Enable GeoLocation Services");

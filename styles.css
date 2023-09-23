@@ -219,4 +219,61 @@ button:active {
 .footer {
   text-align: center;
   font-size: 15px;
+bottom: -690px;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Style the custom select element */
+.custom-select {
+  display: block;
+  width: 50%;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 60px;
+  background-color: #024a63;
+  appearance: none; /* Remove default styles in some browsers */
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+
+
+
+/* Style the options */
+.custom-select option {
+  padding: 10px;
+  
+}
+
+option {
+  text-align: center;
+  cursor: pointer;
+}
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#intro-h1 {
+  text-align: center;
+}
+
+
+#go-btn {
+  width: 20%;
+  margin-top: auto;
+  margin-bottom: auto;
+
+}
+
+.select-container {
+  display: flex;
 }
