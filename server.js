@@ -11,8 +11,6 @@ const goBtn = document.getElementById("go-btn");
 const introContainer = document.querySelector(".intro-container");
 const introH1 = document.getElementById("intro-h1");
 
-
-
 // initialize
 topContainer.classList.add("hidden");
 latEl.classList.add("hidden");
@@ -166,14 +164,12 @@ function displayWeather(resp) {
   document.querySelector(
     "body"
   ).style.backgroundImage = `url(${weatherBackground})`;
+  topContainer.classList.remove("hidden");
 }
 
 weatherBtn.addEventListener("click", getWeather);
 
-
-
-
-function hideIntro () {
+function hideIntro() {
   introContainer.style.display = "none";
 }
 
@@ -187,6 +183,9 @@ goBtn.addEventListener("click", () => {
     hideIntro();
   } else if (val === "coordinates") {
     hideIntro();
-
+    latEl.classList.remove("hidden");
+    lonEl.classList.remove("hidden");
+    weatherBtn.classList.remove("hidden");
+    getCurrLoc.classList.remove("hidden");
   }
 });
