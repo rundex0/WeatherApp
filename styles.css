@@ -230,7 +230,7 @@ bottom: -690px;
 /* Style the custom select element */
 .custom-select {
   display: block;
-  width: 50%;
+  width: fit-content;
   padding: 10px;
   font-size: 20px;
   border-radius: 60px;
@@ -241,20 +241,25 @@ bottom: -690px;
   cursor: pointer;
   color: white;
   border: none;
+  appearance: none;
+  border-style: none;
+  outline-color: white;
+  text-overflow: ellipsis;
 }
 
 
 
 /* Style the options */
 .custom-select option {
-  padding: 10px;
-  
-}
-
-option {
+  padding: 10px 15px;
+  border-radius: 60px;
+  margin: 5px 0;
+  border-style: none;
   text-align: center;
   cursor: pointer;
+  width:10px;
 }
+
 
 .intro-container {
   display: flex;
@@ -276,4 +281,13 @@ option {
 
 .select-container {
   display: flex;
+}
+
+
+
+@media screen and (max-width: 540px) {
+  .custom-select option {
+    font-size: 15px;
+    width: fit-content;
+  }
 }
