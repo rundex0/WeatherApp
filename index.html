@@ -14,13 +14,15 @@
   </head>
   <body>
     <div class="inputs">
+
+      
       <div class="intro-container">
         <h1 id="intro-h1">Grab Weather By City Name or Coordinates</h1>
         <div class="select-container">
           <select id="locationType" class="custom-select">
             <option value="select">---Select Option---</option>
-            <option value="city">City Name</option>
-            <option value="coordinates">Coordinates</option>
+            <option id="citySelected" value="city">City Name</option>
+            <option id="coorSelected" value="coordinates">Coordinates</option>
           </select>
           <button id="go-btn">Go</button>
         </div>

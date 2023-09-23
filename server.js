@@ -6,6 +6,11 @@ import { key } from "./config.js";
 let location_timeout;
 const topContainer = document.querySelector(".top-container");
 const inputTextList = document.querySelectorAll(".inputsText");
+const selectOption = document.getElementById("locationType");
+const goBtn = document.getElementById("go-btn");
+const introContainer = document.querySelector(".intro-container");
+const introH1 = document.getElementById("intro-h1");
+
 
 
 // initialize
@@ -15,13 +20,9 @@ lonEl.classList.add("hidden");
 weatherBtn.classList.add("hidden");
 getCurrLoc.classList.add("hidden");
 
-inputTextList.forEach(function(inputText) {
+inputTextList.forEach(function (inputText) {
   inputText.classList.add("hidden");
 });
-
-
-
-
 
 function geolocFail() {
   alert("Enable GeoLocation Services");
@@ -73,8 +74,6 @@ getCurrLoc.addEventListener("click", () => {
   } else {
     geolocFail();
   }
-
-
 });
 
 function msToTime(unix_timestamp) {
@@ -164,7 +163,30 @@ function displayWeather(resp) {
     "Sunset: " + sunset + "pm 🌙";
   document.querySelector(".location").textContent = city;
   document.querySelector(".weather-icon").src = weatherIcon;
-  document.querySelector("body").style.backgroundImage = `url(${weatherBackground})`;
+  document.querySelector(
+    "body"
+  ).style.backgroundImage = `url(${weatherBackground})`;
 }
 
 weatherBtn.addEventListener("click", getWeather);
+
+
+
+
+function hideIntro () {
+  introContainer.style.display = "none";
+}
+
+goBtn.addEventListener("click", () => {
+  console.log("Go button clicked");
+  const val = selectOption.value;
+
+  if (val === "select") {
+    alert("Choose either City Name or Coordinates");
+  } else if (val === "city") {
+    hideIntro();
+  } else if (val === "coordinates") {
+    hideIntro();
+
+  }
+});
