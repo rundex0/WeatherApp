@@ -46,6 +46,7 @@ getCurrLoc.addEventListener("click", () => {
         latEl.value = lat.toFixed(2);
         lonEl.value = long.toFixed(2);
         console.log(lat + ": latitude, " + long + ": longitude");
+        getWeather();
       },
       function (error) {
         clearTimeout(location_timeout); // Clear the timeout if there's an error
@@ -55,6 +56,8 @@ getCurrLoc.addEventListener("click", () => {
   } else {
     geolocFail();
   }
+
+
 });
 
 function msToTime(unix_timestamp) {

@@ -1,3 +1,4 @@
+
 * {
   font-family: Arial, sans-serif;
   font-weight: 600;
@@ -213,4 +214,9 @@ button:active {
 .make-column {
   display: flex;
   flex-direction: column;
+}
+
+.footer {
+  text-align: center;
+  font-size: 15px;
 }
