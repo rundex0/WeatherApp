@@ -10,6 +10,9 @@ const selectOption = document.getElementById("locationType");
 const goBtn = document.getElementById("go-btn");
 const introContainer = document.querySelector(".intro-container");
 const introH1 = document.getElementById("intro-h1");
+const cityHeader = document.getElementById("cityHeader");
+const cityInput = document.getElementById("cityInput");
+const cityBtn = document.getElementById("cityBtn");
 
 // initialize
 topContainer.classList.add("hidden");
@@ -17,6 +20,9 @@ latEl.classList.add("hidden");
 lonEl.classList.add("hidden");
 weatherBtn.classList.add("hidden");
 getCurrLoc.classList.add("hidden");
+cityBtn.classList.add("hidden");
+cityHeader.classList.add("hidden");
+cityInput.classList.add("hidden");
 
 inputTextList.forEach(function (inputText) {
   inputText.classList.add("hidden");
@@ -62,7 +68,7 @@ getCurrLoc.addEventListener("click", () => {
         latEl.value = lat.toFixed(2);
         lonEl.value = long.toFixed(2);
         console.log(lat + ": latitude, " + long + ": longitude");
-        getWeather();
+        getWeatherCoord();
       },
       function (error) {
         clearTimeout(location_timeout); // Clear the timeout if there's an error
@@ -73,6 +79,26 @@ getCurrLoc.addEventListener("click", () => {
     geolocFail();
   }
 });
+
+function getCityWeather() {
+  const cityName = cityInput.value;
+  
+  let lang = "en";
+  let units = "imperial";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=${units}`;
+
+  fetch(url)
+    .then((resp) => {
+      if (!resp.ok) throw Error(resp.statusText);
+      return resp.json();
+    })
+    .then((data) => {
+      displayWeather(data);
+    })
+    .catch(console.error);
+
+
+}
 
 function msToTime(unix_timestamp) {
   const date = new Date(unix_timestamp * 1000);
@@ -91,7 +117,7 @@ function msToTime(unix_timestamp) {
   return formattedTime;
 }
 
-function getWeather(ev) {
+function getWeatherCoord(ev) {
   let lat = latEl.value;
   let lon = lonEl.value;
   console.log(lat + "  " + lon);
@@ -113,9 +139,10 @@ function getWeather(ev) {
 function getWeatherIcon(id) {
   if (id >= 200 && id < 233) return "./open-weather-symbols/thunderstorm.png";
   else if (id >= 801) return "./open-weather-symbols/clouds.png";
-  else if (id >= 500 && id < 532) return "./open-weather-symbols/rain.png";
+  else if (id >= 300 && id < 532) return "./open-weather-symbols/rain.png";
   else if (id === 800) return "./open-weather-symbols/clear-sky.png";
   else if (id >= 600 && id < 623) return "./open-weather-symbols/snow.png";
+  else if (id >= 701 && id < 782) return "./open-weather-symbols/mist-atmosphere.png";
   else {
     console.log("No matching icon found for weather ID: " + id);
     return "";
@@ -125,9 +152,10 @@ function getWeatherIcon(id) {
 function getWeatherBackground(id) {
   if (id >= 200 && id < 233) return "./weather-backgrounds/thunderstorm.jpeg";
   else if (id >= 801) return "./weather-backgrounds/clouds.jpg";
-  else if (id >= 500 && id < 532) return "./weather-backgrounds/rain.jpg";
+  else if (id >= 300 && id < 532) return "./weather-backgrounds/rain.jpg";
   else if (id === 800) return "./weather-backgrounds/sun.jpg";
   else if (id >= 600 && id < 623) return "./weather-backgrounds/snow.jpg";
+  else if (id >= 701 && id < 782) return "./weather-backgrounds/mist.jpeg";
   else {
     console.log("No matching icon found for weather ID: " + id);
     return "";
@@ -135,6 +163,7 @@ function getWeatherBackground(id) {
 }
 
 function displayWeather(resp) {
+  console.log(resp);
   const temp = Math.round(resp.main.temp);
   const summary = capitalizeWords(resp.weather[0].description);
   const humidity = resp.main.humidity;
@@ -146,8 +175,8 @@ function displayWeather(resp) {
   const weatherID = resp.weather[0].id;
   const weatherIcon = getWeatherIcon(weatherID);
   const weatherBackground = getWeatherBackground(weatherID);
+  const country =  resp.sys.country;
 
-  console.log(resp);
   document.querySelector(".temp").textContent = temp + "°";
   document.querySelector(".weather-desc").textContent = summary;
   document.getElementById("weather-humidty").textContent =
@@ -159,7 +188,7 @@ function displayWeather(resp) {
     "Sunrise: " + sunrise + "am ☀️";
   document.getElementById("weather-sunset").textContent =
     "Sunset: " + sunset + "pm 🌙";
-  document.querySelector(".location").textContent = city;
+  document.querySelector(".location").textContent = (city + ", " + country);
   document.querySelector(".weather-icon").src = weatherIcon;
   document.querySelector(
     "body"
@@ -167,19 +196,22 @@ function displayWeather(resp) {
   topContainer.classList.remove("hidden");
 }
 
-weatherBtn.addEventListener("click", getWeather);
+weatherBtn.addEventListener("click", getWeatherCoord);
 
 function hideIntro() {
   introContainer.style.display = "none";
 }
 
 goBtn.addEventListener("click", () => {
-  console.log("Go button clicked");
+  console.log(selectOption.value);
   const val = selectOption.value;
 
   if (val === "select") {
     alert("Choose either City Name or Coordinates");
   } else if (val === "city") {
+    cityBtn.classList.remove("hidden");
+    cityHeader.classList.remove("hidden");
+    cityInput.classList.remove("hidden");
     hideIntro();
   } else if (val === "coordinates") {
     hideIntro();
@@ -189,3 +221,6 @@ goBtn.addEventListener("click", () => {
     getCurrLoc.classList.remove("hidden");
   }
 });
+
+
+cityBtn.addEventListener("click", getCityWeather);
