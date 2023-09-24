@@ -82,7 +82,7 @@ getCurrLoc.addEventListener("click", () => {
 
 function getCityWeather() {
   const cityName = cityInput.value;
-  
+
   let lang = "en";
   let units = "imperial";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=${units}`;
@@ -96,8 +96,6 @@ function getCityWeather() {
       displayWeather(data);
     })
     .catch(console.error);
-
-
 }
 
 function msToTime(unix_timestamp) {
@@ -109,11 +107,8 @@ function msToTime(unix_timestamp) {
 
   if (hours > 12) hours -= 12;
 
-  // Will display time in 10:30:23 format
+  // Will display time in 10:30 format
   const formattedTime = hours + ":" + minutes.substr(-2);
-
-  console.log(formattedTime);
-
   return formattedTime;
 }
 
@@ -142,7 +137,8 @@ function getWeatherIcon(id) {
   else if (id >= 300 && id < 532) return "./open-weather-symbols/rain.png";
   else if (id === 800) return "./open-weather-symbols/clear-sky.png";
   else if (id >= 600 && id < 623) return "./open-weather-symbols/snow.png";
-  else if (id >= 701 && id < 782) return "./open-weather-symbols/mist-atmosphere.png";
+  else if (id >= 701 && id < 782)
+    return "./open-weather-symbols/mist-atmosphere.png";
   else {
     console.log("No matching icon found for weather ID: " + id);
     return "";
@@ -175,7 +171,7 @@ function displayWeather(resp) {
   const weatherID = resp.weather[0].id;
   const weatherIcon = getWeatherIcon(weatherID);
   const weatherBackground = getWeatherBackground(weatherID);
-  const country =  resp.sys.country;
+  const country = resp.sys.country;
 
   document.querySelector(".temp").textContent = temp + "°";
   document.querySelector(".weather-desc").textContent = summary;
@@ -188,7 +184,7 @@ function displayWeather(resp) {
     "Sunrise: " + sunrise + "am ☀️";
   document.getElementById("weather-sunset").textContent =
     "Sunset: " + sunset + "pm 🌙";
-  document.querySelector(".location").textContent = (city + ", " + country);
+  document.querySelector(".location").textContent = city + ", " + country;
   document.querySelector(".weather-icon").src = weatherIcon;
   document.querySelector(
     "body"
@@ -219,8 +215,10 @@ goBtn.addEventListener("click", () => {
     lonEl.classList.remove("hidden");
     weatherBtn.classList.remove("hidden");
     getCurrLoc.classList.remove("hidden");
+    inputTextList.forEach(function (inputText) {
+      inputText.classList.remove("hidden");
+    });
   }
 });
-
 
 cityBtn.addEventListener("click", getCityWeather);
