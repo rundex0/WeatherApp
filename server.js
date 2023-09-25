@@ -13,6 +13,7 @@ const introH1 = document.getElementById("intro-h1");
 const cityHeader = document.getElementById("cityHeader");
 const cityInput = document.getElementById("cityInput");
 const cityBtn = document.getElementById("cityBtn");
+const backBtn = document.getElementById("back-btn");
 
 // initialize
 topContainer.classList.add("hidden");
@@ -23,6 +24,7 @@ getCurrLoc.classList.add("hidden");
 cityBtn.classList.add("hidden");
 cityHeader.classList.add("hidden");
 cityInput.classList.add("hidden");
+backBtn.classList.add("hidden");
 
 inputTextList.forEach(function (inputText) {
   inputText.classList.add("hidden");
@@ -208,6 +210,7 @@ goBtn.addEventListener("click", () => {
     cityBtn.classList.remove("hidden");
     cityHeader.classList.remove("hidden");
     cityInput.classList.remove("hidden");
+    backBtn.classList.remove("hidden");
     hideIntro();
   } else if (val === "coordinates") {
     hideIntro();
@@ -215,6 +218,7 @@ goBtn.addEventListener("click", () => {
     lonEl.classList.remove("hidden");
     weatherBtn.classList.remove("hidden");
     getCurrLoc.classList.remove("hidden");
+    backBtn.classList.remove("hidden");
     inputTextList.forEach(function (inputText) {
       inputText.classList.remove("hidden");
     });
@@ -222,3 +226,21 @@ goBtn.addEventListener("click", () => {
 });
 
 cityBtn.addEventListener("click", getCityWeather);
+
+
+backBtn.addEventListener("click", () => {
+topContainer.classList.add("hidden");
+latEl.classList.add("hidden");
+lonEl.classList.add("hidden");
+weatherBtn.classList.add("hidden");
+getCurrLoc.classList.add("hidden");
+cityBtn.classList.add("hidden");
+cityHeader.classList.add("hidden");
+cityInput.classList.add("hidden");
+backBtn.classList.add("hidden");
+introContainer.style.display = "flex";
+inputTextList.forEach(function (inputText) {
+  inputText.classList.add("hidden");
+});
+
+})

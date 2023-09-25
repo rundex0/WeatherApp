@@ -235,7 +235,7 @@ bottom: -690px;
   font-size: 20px;
   border-radius: 60px;
   background-color: #024a63;
-  appearance: none; /* Remove default styles in some browsers */
+  appearance: none; 
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
@@ -247,7 +247,9 @@ bottom: -690px;
   text-overflow: ellipsis;
 }
 
-
+#locationType:hover {
+  background-color: #054558;
+}
 
 /* Style the options */
 .custom-select option {
@@ -290,4 +292,17 @@ bottom: -690px;
     font-size: 15px;
     width: fit-content;
   }
+}
+
+
+#back-arrow {
+  height: 35px;
+  width: 35px;
+}
+
+#back-btn {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
 }
