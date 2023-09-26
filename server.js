@@ -63,13 +63,13 @@ getCurrLoc.addEventListener("click", () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         clearTimeout(location_timeout); // Clear the timeout when geolocation succeeds
-        console.log("button clicked");
+        
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
 
         latEl.value = lat.toFixed(2);
         lonEl.value = long.toFixed(2);
-        console.log(lat + ": latitude, " + long + ": longitude");
+   
         getWeatherCoord();
       },
       function (error) {
@@ -117,7 +117,7 @@ function msToTime(unix_timestamp) {
 function getWeatherCoord(ev) {
   let lat = latEl.value;
   let lon = lonEl.value;
-  console.log(lat + "  " + lon);
+  
   let lang = "en";
   let units = "imperial";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}`;
@@ -200,8 +200,7 @@ function hideIntro() {
   introContainer.style.display = "none";
 }
 
-goBtn.addEventListener("click", () => {
-  console.log(selectOption.value);
+goBtn.addEventListener("click", function goButtonClicked() {
   const val = selectOption.value;
 
   if (val === "select") {
@@ -227,20 +226,29 @@ goBtn.addEventListener("click", () => {
 
 cityBtn.addEventListener("click", getCityWeather);
 
-
 backBtn.addEventListener("click", () => {
-topContainer.classList.add("hidden");
-latEl.classList.add("hidden");
-lonEl.classList.add("hidden");
-weatherBtn.classList.add("hidden");
-getCurrLoc.classList.add("hidden");
-cityBtn.classList.add("hidden");
-cityHeader.classList.add("hidden");
-cityInput.classList.add("hidden");
-backBtn.classList.add("hidden");
-introContainer.style.display = "flex";
-inputTextList.forEach(function (inputText) {
-  inputText.classList.add("hidden");
+  topContainer.classList.add("hidden");
+  latEl.classList.add("hidden");
+  lonEl.classList.add("hidden");
+  weatherBtn.classList.add("hidden");
+  getCurrLoc.classList.add("hidden");
+  cityBtn.classList.add("hidden");
+  cityHeader.classList.add("hidden");
+  cityInput.classList.add("hidden");
+  backBtn.classList.add("hidden");
+  introContainer.style.display = "flex";
+  inputTextList.forEach(function (inputText) {
+    inputText.classList.add("hidden");
+  });
 });
 
-})
+
+selectOption.addEventListener("click", () => {
+  document.addEventListener("keydown", keyPressed);
+  function keyPressed(e) {
+    if (e.code == "Enter") {
+      e.preventDefault();
+      goBtn.click();
+    }
+  }
+});
