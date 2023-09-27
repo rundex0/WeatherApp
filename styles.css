@@ -242,6 +242,13 @@ button:active {
   outline-color: white;
   text-overflow: ellipsis;
   backdrop-filter: blur(200px);
+  transition: max-height 0.9s ease-in-out;
+  overflow: hidden;
+}
+
+i {
+  width: 10px;
+  height: 10px;
 }
 
 #locationType {
@@ -256,8 +263,6 @@ button:active {
   margin-top: 10px;
   padding: 10px;
 }
-
-
 
 /* Style the options */
 .custom-select option {
@@ -280,7 +285,9 @@ button:active {
 }
 
 #go-btn,
-#back-btn {
+#back-btn,
+#get-location,
+#get-weather {
   backdrop-filter: blur(200px);
   font-size: 25px;
   width: fit-content;
@@ -294,14 +301,39 @@ button:active {
 }
 
 #go-btn p,
-#back-btn img {
+#back-btn img,
+#get-location p,
+#get-weather p,
+#cityBtn p {
   margin: auto;
+}
+
+#go-btn p,
+#back-btn img {
   padding: 10px;
 }
 
+#get-location,
+#get-weather,
+#cityBtn {
+  border-radius: 60px;
+  height: 38px;
+  border: 2px solid white;
+  margin-top: 15px;
+  font-size: 20px;
+  padding: 10px;
+  outline: none; /* Remove the default outline */
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 #go-btn:hover,
-#back-btn:hover, .listItem:hover,
-.select-container h1:hover {
+#back-btn:hover,
+.listItem:hover,
+.select-container h1:hover,
+#get-location:hover,
+#get-weather:hover,
+#cityBtn:hover {
   transition: ease-in-out 0.2s;
   opacity: 75%;
   color: rgb(255, 255, 255);
