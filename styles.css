@@ -232,27 +232,31 @@ button:active {
   width: fit-content;
   padding: 10px;
   font-size: 25px;
-  border-radius: 60px;
   background-color: transparent;
   appearance: none;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
   color: white;
-  border: 2px solid white;
   appearance: none;
   outline-color: white;
   text-overflow: ellipsis;
   backdrop-filter: blur(200px);
- 
-
 }
 
 #locationType {
   backdrop-filter: blur(100px);
   background-color: transparent;
+  margin-top: 0;
 }
- 
+
+.listItem {
+  border: 2px solid white;
+  border-radius: 60px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
 
 
 /* Style the options */
@@ -264,7 +268,6 @@ button:active {
   text-align: center;
   cursor: pointer;
   width: 10px;
-
 }
 
 .intro-container {
@@ -276,7 +279,8 @@ button:active {
   text-align: center;
 }
 
-#go-btn, #back-btn {
+#go-btn,
+#back-btn {
   backdrop-filter: blur(200px);
   font-size: 25px;
   width: fit-content;
@@ -285,40 +289,46 @@ button:active {
   border-radius: 60px;
   border: 2px solid white;
   color: white;
-  opacity: 75%;
+  opacity: 100%;
   padding: auto;
 }
 
-#go-btn p, #back-btn img {
+#go-btn p,
+#back-btn img {
   margin: auto;
   padding: 10px;
 }
 
-#go-btn:hover, #back-btn:hover {
+#go-btn:hover,
+#back-btn:hover, .listItem:hover,
+.select-container h1:hover {
   transition: ease-in-out 0.2s;
-  opacity: 100%;
+  opacity: 75%;
   color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 
-
-#citySelected, #coorSelected, #select {
+#citySelected,
+#coorSelected,
+#select {
   backdrop-filter: blur(200px);
   background-color: transparent;
   list-style: none;
 }
-
 
 .select-container {
   display: flex;
   flex-direction: column;
 }
 
-.select-container h1 
-{
+.select-container h1 {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  border: 2px solid white;
+  border-radius: 60px;
+  padding: 10px;
 }
 
 @media screen and (max-width: 540px) {
@@ -332,11 +342,3 @@ button:active {
   height: 35px;
   width: 35px;
 }
-
-#back-btn {
-  /* width: fit-content;
-  height: fit-content;
-  padding: 10px 20px; */
-}
-
-

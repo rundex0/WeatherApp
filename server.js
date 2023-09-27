@@ -6,14 +6,15 @@ import { key } from "./config.js";
 let location_timeout;
 const topContainer = document.querySelector(".top-container");
 const inputTextList = document.querySelectorAll(".inputsText");
-const selectOption = document.getElementById("locationType");
+const selectOption = document.getElementById("select-opt");
 const goBtn = document.getElementById("go-btn");
 const introContainer = document.querySelector(".intro-container");
-const introH1 = document.getElementById("intro-h1");
 const cityHeader = document.getElementById("cityHeader");
 const cityInput = document.getElementById("cityInput");
 const cityBtn = document.getElementById("cityBtn");
 const backBtn = document.getElementById("back-btn");
+const optionContainer = document.querySelector(".custom-select");
+const listItem = document.querySelectorAll(".listItem");
 
 // initialize
 topContainer.classList.add("hidden");
@@ -25,6 +26,7 @@ cityBtn.classList.add("hidden");
 cityHeader.classList.add("hidden");
 cityInput.classList.add("hidden");
 backBtn.classList.add("hidden");
+optionContainer.style.display = "none";
 
 inputTextList.forEach(function (inputText) {
   inputText.classList.add("hidden");
@@ -63,13 +65,13 @@ getCurrLoc.addEventListener("click", () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         clearTimeout(location_timeout); // Clear the timeout when geolocation succeeds
-        
+
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
 
         latEl.value = lat.toFixed(2);
         lonEl.value = long.toFixed(2);
-   
+
         getWeatherCoord();
       },
       function (error) {
@@ -117,7 +119,7 @@ function msToTime(unix_timestamp) {
 function getWeatherCoord(ev) {
   let lat = latEl.value;
   let lon = lonEl.value;
-  
+
   let lang = "en";
   let units = "imperial";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}`;
@@ -201,18 +203,18 @@ function hideIntro() {
 }
 
 goBtn.addEventListener("click", function goButtonClicked() {
-  const val = selectOption.value;
-
-  if (val === "select") {
+  const val = selectOption.textContent;
+  console.log("button clicked = val = " + val);
+  if (val === "Select Option") {
     alert("Choose either City Name or Coordinates");
-  } else if (val === "city") {
+  } else if (val === "City Name") {
     cityBtn.classList.remove("hidden");
     cityHeader.classList.remove("hidden");
     cityInput.classList.remove("hidden");
     backBtn.classList.remove("hidden");
-    
+
     hideIntro();
-  } else if (val === "coordinates") {
+  } else if (val === "Coordinates") {
     hideIntro();
     latEl.classList.remove("hidden");
     lonEl.classList.remove("hidden");
@@ -231,8 +233,16 @@ backBtn.addEventListener("click", () => {
   window.location.reload();
 });
 
-
 selectOption.addEventListener("click", () => {
+  if (
+    optionContainer.style.display === "none" ||
+    optionContainer.style.display === ""
+  ) {
+    optionContainer.style.display = "block";
+  } else {
+    optionContainer.style.display = "none";
+  }
+
   document.addEventListener("keydown", keyPressed);
   function keyPressed(e) {
     if (e.code == "Enter") {
@@ -252,8 +262,6 @@ cityInput.addEventListener("click", () => {
   }
 });
 
-
-
 latEl.addEventListener("click", () => {
   document.addEventListener("keydown", keyPressed);
   function keyPressed(e) {
@@ -272,4 +280,16 @@ lonEl.addEventListener("click", () => {
       weatherBtn.click();
     }
   }
+});
+
+listItem.forEach(function (li) {
+  li.addEventListener("click", () => {
+    console.log(li.textContent);
+
+    const currVal = selectOption.textContent;
+
+    selectOption.textContent = li.textContent;
+
+    optionContainer.style.display = "none";
+  });
 });
