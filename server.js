@@ -210,6 +210,7 @@ goBtn.addEventListener("click", function goButtonClicked() {
     cityHeader.classList.remove("hidden");
     cityInput.classList.remove("hidden");
     backBtn.classList.remove("hidden");
+    
     hideIntro();
   } else if (val === "coordinates") {
     hideIntro();
@@ -227,19 +228,7 @@ goBtn.addEventListener("click", function goButtonClicked() {
 cityBtn.addEventListener("click", getCityWeather);
 
 backBtn.addEventListener("click", () => {
-  topContainer.classList.add("hidden");
-  latEl.classList.add("hidden");
-  lonEl.classList.add("hidden");
-  weatherBtn.classList.add("hidden");
-  getCurrLoc.classList.add("hidden");
-  cityBtn.classList.add("hidden");
-  cityHeader.classList.add("hidden");
-  cityInput.classList.add("hidden");
-  backBtn.classList.add("hidden");
-  introContainer.style.display = "flex";
-  inputTextList.forEach(function (inputText) {
-    inputText.classList.add("hidden");
-  });
+  window.location.reload();
 });
 
 
@@ -249,6 +238,38 @@ selectOption.addEventListener("click", () => {
     if (e.code == "Enter") {
       e.preventDefault();
       goBtn.click();
+    }
+  }
+});
+
+cityInput.addEventListener("click", () => {
+  document.addEventListener("keydown", keyPressed);
+  function keyPressed(e) {
+    if (e.code == "Enter") {
+      e.preventDefault();
+      cityBtn.click();
+    }
+  }
+});
+
+
+
+latEl.addEventListener("click", () => {
+  document.addEventListener("keydown", keyPressed);
+  function keyPressed(e) {
+    if (e.code == "Enter") {
+      e.preventDefault();
+      weatherBtn.click();
+    }
+  }
+});
+
+lonEl.addEventListener("click", () => {
+  document.addEventListener("keydown", keyPressed);
+  function keyPressed(e) {
+    if (e.code == "Enter") {
+      e.preventDefault();
+      weatherBtn.click();
     }
   }
 });
