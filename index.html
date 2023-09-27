@@ -13,26 +13,32 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="back-btn">
+      <img id="back-arrow" src="arrow-67-xxl.png" alt="" />
+    </div>
 
-    <button id="back-btn"><img id="back-arrow" src="arrow-67-xxl.png" alt=""></button>
-    
     <div class="inputs">
       <div class="intro-container">
         <h1 id="intro-h1">Grab Weather By City Name or Coordinates</h1>
         <div class="select-container">
-          <select id="locationType" class="custom-select">
-            <option value="select">---Select Option---</option>
-            <option id="citySelected" value="city">City Name</option>
-            <option id="coorSelected" value="coordinates">Coordinates</option>
-          </select>
-          <button id="go-btn">Go</button>
+
+
+          <h1>---Select Option---</h1>
+          <ul id="locationType" class="custom-select">
+            <li id="select" value="select">---Select Option---</li>
+            <li id="citySelected" value="city">City Name</li>
+            <li id="coorSelected" value="coordinates">Coordinates</li>
+          </ul>
+
+
         </div>
+        <div id="go-btn"><p>Enter</p></div>
+
       </div>
 
       <p id="cityHeader">City</p>
-      <input id="cityInput" type="text" placeholder="Ex: Orlando">
+      <input id="cityInput" type="text" placeholder="Ex: Orlando" />
       <button id="cityBtn">Get City Weather</button>
-
 
       <p class="inputsText">Longitude</p>
       <input type="text" placeholder="Ex: -81.38" id="lon" />

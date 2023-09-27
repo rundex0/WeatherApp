@@ -231,24 +231,29 @@ button:active {
   display: block;
   width: fit-content;
   padding: 10px;
-  font-size: 20px;
+  font-size: 25px;
   border-radius: 60px;
-  background-color: #024a63;
+  background-color: transparent;
   appearance: none;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
   color: white;
-  border: none;
+  border: 2px solid white;
   appearance: none;
-  border-style: none;
   outline-color: white;
   text-overflow: ellipsis;
+  backdrop-filter: blur(200px);
+ 
+
 }
 
-#locationType:hover {
-  background-color: #054558;
+#locationType {
+  backdrop-filter: blur(100px);
+  background-color: transparent;
 }
+ 
+
 
 /* Style the options */
 .custom-select option {
@@ -259,6 +264,7 @@ button:active {
   text-align: center;
   cursor: pointer;
   width: 10px;
+
 }
 
 .intro-container {
@@ -270,14 +276,49 @@ button:active {
   text-align: center;
 }
 
-#go-btn {
-  width: 20%;
-  margin-top: auto;
-  margin-bottom: auto;
+#go-btn, #back-btn {
+  backdrop-filter: blur(200px);
+  font-size: 25px;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+  border-radius: 60px;
+  border: 2px solid white;
+  color: white;
+  opacity: 75%;
+  padding: auto;
 }
+
+#go-btn p, #back-btn img {
+  margin: auto;
+  padding: 10px;
+}
+
+#go-btn:hover, #back-btn:hover {
+  transition: ease-in-out 0.2s;
+  opacity: 100%;
+  color: rgb(255, 255, 255);
+}
+
+
+#citySelected, #coorSelected, #select {
+  backdrop-filter: blur(200px);
+  background-color: transparent;
+  list-style: none;
+}
+
 
 .select-container {
   display: flex;
+  flex-direction: column;
+}
+
+.select-container h1 
+{
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 540px) {
@@ -293,10 +334,9 @@ button:active {
 }
 
 #back-btn {
-  width: fit-content;
+  /* width: fit-content;
   height: fit-content;
-  padding: 10px 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px 20px; */
 }
 
 
