@@ -204,7 +204,7 @@ function hideIntro() {
 
 goBtn.addEventListener("click", function goButtonClicked() {
   const val = selectOption.textContent;
-  console.log("button clicked = val = " + val);
+  console.log("button clicked = val = " + "'" + val +"'");
   if (val === "Select Option") {
     alert("Choose either City Name or Coordinates");
   } else if (val === "City Name") {
