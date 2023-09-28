@@ -2,7 +2,6 @@ const getCurrLoc = document.getElementById("get-location");
 const latEl = document.getElementById("lat");
 const lonEl = document.getElementById("lon");
 const weatherBtn = document.getElementById("get-weather");
-import { key } from "./config.js";
 let location_timeout;
 const topContainer = document.querySelector(".top-container");
 const inputTextList = document.querySelectorAll(".inputsText");
@@ -15,6 +14,7 @@ const cityBtn = document.getElementById("cityBtn");
 const backBtn = document.getElementById("back-btn");
 const optionContainer = document.querySelector(".custom-select");
 const listItem = document.querySelectorAll(".listItem");
+import { key } from "./config.js";
 
 // initialize
 topContainer.classList.add("hidden");
@@ -27,7 +27,6 @@ cityHeader.classList.add("hidden");
 cityInput.classList.add("hidden");
 backBtn.classList.add("hidden");
 optionContainer.style.display = "none";
-
 inputTextList.forEach(function (inputText) {
   inputText.classList.add("hidden");
 });
