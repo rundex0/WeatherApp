@@ -4,57 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <!-- Favicon for the website -->
     <link
       rel="icon"
       type="image/x-icon"
       href="icons8-sun-color-favicons/Web/icons8-sun-color-32.png"
     />
+    <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Back button container -->
     <div id="back-btn">
       <img id="back-arrow" src="./other-symbols/back-arrow.png" alt="" />
     </div>
 
+    <!-- Input section for weather queries -->
     <div class="inputs">
       <div class="intro-container">
         <h1 id="intro-h1">Grab Weather By City Name or Coordinates</h1>
+        <!-- Select option for city name or coordinates -->
         <div class="select-container">
           <h1 id="select-opt" val="select">Select Option</h1>
+          <!-- Custom select dropdown for choosing input type -->
           <ul id="locationType" class="custom-select">
             <li class="listItem" id="citySelected" value="city">City Name</li>
             <li class="listItem" id="coorSelected" value="coordinates">Coordinates</li>
           </ul>
         </div>
+        <!-- Button to submit the query -->
         <div id="go-btn"><p>Enter</p></div>
       </div>
 
+      <!-- Input field for city name -->
       <p id="cityHeader">City</p>
       <input id="cityInput" type="text" placeholder="Ex: Orlando" />
+      <!-- Button to get weather by city name -->
       <div id="cityBtn"><p>Get City Weather</p></div>
 
+      <!-- Input fields for longitude and latitude -->
       <p class="inputsText">Longitude</p>
       <input type="text" placeholder="Ex: -81.38" id="lon" />
       <p class="inputsText">Latitude</p>
       <input type="text" placeholder="Ex: 28.54" id="lat" />
+      <!-- Button to get current location's weather -->
       <div id="get-location"><p>Get Current Location</p></div>
+      <!-- Button to get weather by coordinates -->
       <div id="get-weather"><p>Get Weather</p></div>
     </div>
 
+    <!-- Weather display container -->
     <div class="wrapper-container">
       <div class="top-container">
+        <!-- Weather description and location -->
         <div class="weather-title-info">
           <h1 class="weather-desc">Sunny</h1>
           <h2 class="location">Orlando</h2>
         </div>
+        <!-- Temperature and other weather data -->
         <div class="temp-container">
           <div class="make-column">
+            <!-- Weather icon -->
             <img
               src="./open-weather-symbols/clear-sky.png"
               class="weather-icon"
             />
+            <!-- Temperature display -->
             <h1 class="temp">75°</h1>
           </div>
+          <!-- Additional weather information -->
           <div class="main-data">
             <p id="weather-humidty">Humidity: 70%</p>
             <p id="weather-high">High: 80°</p>
@@ -64,13 +82,21 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="footer">
-        <p>Created by Nathan Carney 2023</p>
-
-      </div> -->
+    </div>
+    <!-- Footer section with attribution and social media links -->
+    <div class="footer">
+      <p>Created by Nathan Carney 2023</p>
+      <!-- LinkedIn link -->
+      <a href="https://www.linkedin.com/in/nathan-carney9/"
+        ><img src="linkedIn-logo.png" alt="LinkedIn Logo"
+      /></a>
+      <!-- GitHub link -->
+      <a href="https://github.com/rundex0/WeatherApp"
+        ><img src="github-logo.png" alt="Github Logo"
+      /></a>
     </div>
 
+    <!-- JavaScript file for server communication -->
     <script src="server.js" type="module"></script>
   </body>
 </html>

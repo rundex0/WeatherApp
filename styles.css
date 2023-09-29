@@ -6,6 +6,7 @@
 html {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 body {
@@ -15,21 +16,28 @@ body {
   background-size: cover;
   overflow-y: scroll;
   color: white;
+  margin: 0;
+  height: 100%;
 }
 
 .top-container {
   backdrop-filter: blur(200px);
   width: 800px;
   height: auto;
-  margin: 10px auto 20px auto;
+  margin: 10px auto 100px auto;
   border-radius: 60px;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
+  flex-grow: 1;
 }
 
 .wrapper-container {
-  margin-top: 200px;
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
 }
 
 .day {
@@ -119,11 +127,14 @@ input {
   margin-top: 15px;
   font-size: 20px;
   padding: 10px;
-  outline: none; /* Remove the default outline */
+  outline: none;
+  background-color: #e4e4e4;
 }
 
 input:focus {
-  outline: 3px solid #024a63; /* Set the outline color to black when the input is in focus */
+  transition: ease-in-out 0.1s;
+  background-color: white;
+  outline: 3px solid rgb(40, 117, 189); /* Set the outline color to black when the input is in focus */
 }
 
 .inputs p {
@@ -215,13 +226,6 @@ button:active {
   flex-direction: column;
 }
 
-.footer {
-  text-align: center;
-  font-size: 15px;
-  bottom: -690px;
-  position: relative;
-}
-
 .hidden {
   display: none;
 }
@@ -300,6 +304,11 @@ i {
   padding: auto;
 }
 
+#back-btn {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
 #go-btn p,
 #back-btn img,
 #get-location p,
@@ -321,10 +330,12 @@ i {
   border: 2px solid white;
   margin-top: 15px;
   font-size: 20px;
-  padding: 10px;
+  padding: 15px;
   outline: none; /* Remove the default outline */
   margin-left: 10px;
   margin-right: 10px;
+  height: fit-content;
+  text-align: center;
 }
 
 #go-btn:hover,
@@ -373,4 +384,27 @@ i {
 #back-arrow {
   height: 35px;
   width: 35px;
+}
+
+.footer img {
+  width: 40px;
+  height: 40px;
+  margin: 0 20px 0 20px;
+}
+
+.footer img:hover {
+  cursor: pointer;
+  opacity: 55%;
+  transition: ease-in-out 0.2s;
+}
+
+.footer {
+  text-align: center;
+  font-size: 15px;
+  backdrop-filter: blur(500px);
+  margin-top: auto;
+  padding: 10px;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
 }
