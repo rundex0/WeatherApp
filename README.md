@@ -31,7 +31,7 @@ The Weather App is a web application that allows users to check the current weat
 
 ## Screenshots
 
-![Weather App Screenshot](WebAppSS.png)
+![Weather App Screenshot](./images/WebAppSS.png)
 
 ## Author
 
