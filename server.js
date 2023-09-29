@@ -1,3 +1,4 @@
+// DOM Elements
 const getCurrLoc = document.getElementById("get-location");
 const latEl = document.getElementById("lat");
 const lonEl = document.getElementById("lon");
@@ -6,7 +7,7 @@ let location_timeout;
 const topContainer = document.querySelector(".top-container");
 const inputTextList = document.querySelectorAll(".inputsText");
 const selectOption = document.getElementById("select-opt");
-const goBtn = document.getElementById("go-btn");
+const enterSelectOption = document.getElementById("go-btn");
 const introContainer = document.querySelector(".intro-container");
 const cityHeader = document.getElementById("cityHeader");
 const cityInput = document.getElementById("cityInput");
@@ -14,9 +15,11 @@ const cityBtn = document.getElementById("cityBtn");
 const backBtn = document.getElementById("back-btn");
 const optionContainer = document.querySelector(".custom-select");
 const listItem = document.querySelectorAll(".listItem");
+
+// API Key (imported from config.js)
 import { key } from "./config.js";
 
-// initialize
+// Initialize elements' visibility
 topContainer.classList.add("hidden");
 latEl.classList.add("hidden");
 lonEl.classList.add("hidden");
@@ -31,11 +34,13 @@ inputTextList.forEach(function (inputText) {
   inputText.classList.add("hidden");
 });
 
+// Function to handle geolocation failure
 function geolocFail() {
   alert("Enable GeoLocation Services");
   clearTimeout(location_timeout); // Clear the timeout if geolocation fails
 }
 
+// Function to capitalize words in a string
 function capitalizeWords(str) {
   // Split the string into words using a space as the separator
   const words = str.split(" ");
@@ -58,6 +63,7 @@ function capitalizeWords(str) {
   return result;
 }
 
+// Event listener for getting current location
 getCurrLoc.addEventListener("click", () => {
   if (navigator.geolocation) {
     location_timeout = setTimeout(geolocFail, 10000);
@@ -74,7 +80,8 @@ getCurrLoc.addEventListener("click", () => {
         getWeatherCoord();
       },
       function (error) {
-        clearTimeout(location_timeout); // Clear the timeout if there's an error
+        // Clear the timeout if there's an error
+        clearTimeout(location_timeout);
         geolocFail();
       }
     );
@@ -83,6 +90,7 @@ getCurrLoc.addEventListener("click", () => {
   }
 });
 
+// Function to fetch weather data by city name
 function getCityWeather() {
   const cityName = cityInput.value;
 
@@ -101,6 +109,7 @@ function getCityWeather() {
     .catch(console.error);
 }
 
+// Clear the timeout if there's an error
 function msToTime(unix_timestamp) {
   const date = new Date(unix_timestamp * 1000);
   // Hours part from the timestamp
@@ -115,6 +124,7 @@ function msToTime(unix_timestamp) {
   return formattedTime;
 }
 
+// Function to fetch weather data by coordinates
 function getWeatherCoord(ev) {
   let lat = latEl.value;
   let lon = lonEl.value;
@@ -134,6 +144,7 @@ function getWeatherCoord(ev) {
     .catch(console.error);
 }
 
+// Function to get weather icon URL based on weather ID
 function getWeatherIcon(id) {
   if (id >= 200 && id < 233) return "./open-weather-symbols/thunderstorm.png";
   else if (id >= 801) return "./open-weather-symbols/clouds.png";
@@ -148,6 +159,7 @@ function getWeatherIcon(id) {
   }
 }
 
+// Function to get weather background image URL based on weather ID
 function getWeatherBackground(id) {
   if (id >= 200 && id < 233) return "./weather-backgrounds/thunderstorm.jpeg";
   else if (id >= 801) return "./weather-backgrounds/clouds.jpg";
@@ -161,8 +173,9 @@ function getWeatherBackground(id) {
   }
 }
 
+// Function to display weather data
 function displayWeather(resp) {
-  console.log(resp);
+  // console.log(resp);
   const temp = Math.round(resp.main.temp);
   const summary = capitalizeWords(resp.weather[0].description);
   const humidity = resp.main.humidity;
@@ -195,15 +208,17 @@ function displayWeather(resp) {
   topContainer.classList.remove("hidden");
 }
 
+// Event listener for clicking the "Get Weather" button
 weatherBtn.addEventListener("click", getWeatherCoord);
 
+// Function to hide the introduction section
 function hideIntro() {
   introContainer.style.display = "none";
 }
 
-goBtn.addEventListener("click", function goButtonClicked() {
+// Event listener for the "Enter" button
+enterSelectOption.addEventListener("click", function goButtonClicked() {
   const val = selectOption.textContent;
-  console.log("button clicked = val = " + "'" + val +"'");
   if (val === "Select Option") {
     alert("Choose either City Name or Coordinates");
   } else if (val === "City Name") {
@@ -226,12 +241,15 @@ goBtn.addEventListener("click", function goButtonClicked() {
   }
 });
 
+// Event listener for clicking the "Get Weather" button for city input
 cityBtn.addEventListener("click", getCityWeather);
 
+// Event listener for clicking the "Back" button
 backBtn.addEventListener("click", () => {
   window.location.reload();
 });
 
+// Event listener for selecting the search option
 selectOption.addEventListener("click", () => {
   if (
     optionContainer.style.display === "none" ||
@@ -246,11 +264,12 @@ selectOption.addEventListener("click", () => {
   function keyPressed(e) {
     if (e.code == "Enter") {
       e.preventDefault();
-      goBtn.click();
+      enterSelectOption.click();
     }
   }
 });
 
+// Event listener for clicking the city input field
 cityInput.addEventListener("click", () => {
   document.addEventListener("keydown", keyPressed);
   function keyPressed(e) {
@@ -261,6 +280,7 @@ cityInput.addEventListener("click", () => {
   }
 });
 
+// Event listeners for clicking the coordinate input fields
 latEl.addEventListener("click", () => {
   document.addEventListener("keydown", keyPressed);
   function keyPressed(e) {
@@ -281,14 +301,11 @@ lonEl.addEventListener("click", () => {
   }
 });
 
+// Event listeners for selecting search options
 listItem.forEach(function (li) {
   li.addEventListener("click", () => {
-    console.log(li.textContent);
-
     const currVal = selectOption.textContent;
-
     selectOption.textContent = li.textContent;
-
     optionContainer.style.display = "none";
   });
 });
