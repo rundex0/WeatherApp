@@ -1,8 +1,10 @@
+/* Global Reset */
 * {
   font-family: Arial, sans-serif;
   font-weight: 600;
 }
 
+/* HTML and Body Styles */
 html {
   margin: 0;
   padding: 0;
@@ -20,6 +22,7 @@ body {
   height: 100%;
 }
 
+/* Top Container */
 .top-container {
   backdrop-filter: blur(200px);
   width: 800px;
@@ -32,14 +35,15 @@ body {
   flex-grow: 1;
 }
 
+/* Wrapper Container */
 .wrapper-container {
   margin-top: 40px;
-
   display: flex;
   flex-direction: column;
   height: fit-content;
 }
 
+/* Day */
 .day {
   width: 200px;
   height: 300px;
@@ -53,6 +57,7 @@ body {
   margin-left: 20px;
 }
 
+/* Bottom Container */
 .btm-container {
   display: flex;
   justify-content: center;
@@ -60,27 +65,33 @@ body {
   padding-bottom: 50px;
 }
 
+/* Temp Container */
 .temp-container {
   display: flex;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* Temperature Style */
 .temp {
   font-size: 150px;
   margin-top: 0px;
   padding: 0 30px;
+  text-align: center;
 }
 
+/* Weather Title Info */
 .weather-title-info {
   text-align: center;
 }
 
+/* Weather Description */
 .weather-desc {
   font-size: 60px;
   margin-bottom: 0px;
 }
 
+/* Location Information */
 .location {
   font-size: 35px;
   color: rgb(230, 230, 230);
@@ -89,6 +100,7 @@ body {
   font-style: oblique;
 }
 
+/* Weather Icon */
 .weather-icon {
   height: 170px;
   width: 170px;
@@ -96,6 +108,7 @@ body {
   margin-right: auto;
 }
 
+/* Day Image */
 .day img {
   height: 100px;
   width: 100px;
@@ -103,10 +116,12 @@ body {
   margin-right: auto;
 }
 
+/* Day Temperature Style */
 .day .temp {
   font-size: 45px;
 }
 
+/* Input Container */
 .inputs {
   display: flex;
   margin-top: 50px;
@@ -120,6 +135,7 @@ body {
   margin-right: auto;
 }
 
+/* Input Styles */
 input {
   border-radius: 60px;
   height: 38px;
@@ -131,12 +147,14 @@ input {
   background-color: #e4e4e4;
 }
 
+/* Input Focus Styles */
 input:focus {
   transition: ease-in-out 0.1s;
   background-color: white;
-  outline: 3px solid rgb(40, 117, 189); /* Set the outline color to black when the input is in focus */
+  outline: 3px solid rgb(40, 117, 189);
 }
 
+/* Input Label Styles */
 .inputs p {
   margin-left: 20px;
   margin-right: 5px;
@@ -144,6 +162,7 @@ input:focus {
   margin-top: 28px;
 }
 
+/* Button Styles */
 button {
   border-radius: 60px;
   border-style: none;
@@ -157,28 +176,33 @@ button {
   margin-top: 10px;
 }
 
+/* Button Hover Styles */
 button:hover {
   transition: ease-in-out 0.2s;
   background-color: #03181f;
   color: rgb(223, 223, 223);
 }
 
+/* Button Active State */
 button:active {
   -webkit-transform: translateY(5px);
   transform: translateY(5px);
 }
 
+/* Main Data Paragraph Styles */
 .main-data p {
   font-size: 30px;
   width: 100%;
   font-family: Arial, sans-serif;
 }
 
+/* Main Data Container */
 .main-data {
   margin-left: auto;
   margin-right: auto;
 }
 
+/* Media Query for Input Container and Buttons */
 @media screen and (max-width: 1253px) {
   .inputs {
     flex-direction: column;
@@ -204,6 +228,7 @@ button:active {
   }
 }
 
+/* Media Query for Top Container */
 @media screen and (max-width: 1226px) {
   .top-container {
     width: 66%;
@@ -211,6 +236,7 @@ button:active {
   }
 }
 
+/* Media Query for Temp Container */
 @media screen and (max-width: 756px) {
   .temp-container {
     flex-direction: column;
@@ -221,16 +247,18 @@ button:active {
   }
 }
 
+/* Utility Class for Flex Column */
 .make-column {
   display: flex;
   flex-direction: column;
 }
 
+/* Utility Class to Hide Element */
 .hidden {
   display: none;
 }
 
-/* Style the custom select element */
+/* Custom Select Styles */
 .custom-select {
   display: block;
   width: fit-content;
@@ -250,17 +278,20 @@ button:active {
   overflow: hidden;
 }
 
+/* Custom Select Arrow Icon */
 i {
   width: 10px;
   height: 10px;
 }
 
+/* Location Type Select */
 #locationType {
   backdrop-filter: blur(100px);
   background-color: transparent;
   margin-top: 0;
 }
 
+/* List Item Styles */
 .listItem {
   border: 2px solid white;
   border-radius: 60px;
@@ -268,7 +299,7 @@ i {
   padding: 10px;
 }
 
-/* Style the options */
+/* Custom Select Option Styles */
 .custom-select option {
   padding: 10px 15px;
   border-radius: 60px;
@@ -279,15 +310,18 @@ i {
   width: 10px;
 }
 
+/* Intro Container Styles */
 .intro-container {
   display: flex;
   flex-direction: column;
 }
 
+/* Intro Heading Style */
 #intro-h1 {
   text-align: center;
 }
 
+/* Action Buttons Styles */
 #go-btn,
 #back-btn,
 #get-location,
@@ -304,24 +338,27 @@ i {
   padding: auto;
 }
 
+/* Back Button Styles */
 #back-btn {
   margin-left: 20px;
   margin-top: 20px;
 }
 
+/* Action Button Text and Icon Styles */
 #go-btn p,
 #back-btn img,
 #get-location p,
 #get-weather p,
 #cityBtn p {
   margin: auto;
+  padding: 20px;
 }
 
-#go-btn p,
-#back-btn img {
-  padding: 10px;
+#go-btn {
+  margin-top: 10px;
 }
 
+/* Location and Weather Action Buttons Styles */
 #get-location,
 #get-weather,
 #cityBtn {
@@ -338,6 +375,7 @@ i {
   text-align: center;
 }
 
+/* Action Button Hover Styles */
 #go-btn:hover,
 #back-btn:hover,
 .listItem:hover,
@@ -351,6 +389,7 @@ i {
   cursor: pointer;
 }
 
+/* Custom Select and Option Container Styles */
 #citySelected,
 #coorSelected,
 #select {
@@ -359,21 +398,24 @@ i {
   list-style: none;
 }
 
+/* Select Container Styles */
 .select-container {
   display: flex;
   flex-direction: column;
 }
 
+/* Select Heading Style */
 .select-container h1 {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 0px;
   border: 2px solid white;
   border-radius: 60px;
   padding: 10px;
 }
 
+/* Media Query for Custom Select Option Styles */
 @media screen and (max-width: 540px) {
   .custom-select option {
     font-size: 15px;
@@ -381,23 +423,27 @@ i {
   }
 }
 
+/* Back Arrow Image Styles */
 #back-arrow {
   height: 35px;
   width: 35px;
 }
 
+/* Footer Image Styles */
 .footer img {
   width: 40px;
   height: 40px;
   margin: 0 20px 0 20px;
 }
 
+/* Footer Image Hover Styles */
 .footer img:hover {
   cursor: pointer;
   opacity: 55%;
   transition: ease-in-out 0.2s;
 }
 
+/* Footer Styles */
 .footer {
   text-align: center;
   font-size: 15px;
