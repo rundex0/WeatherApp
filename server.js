@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 // DOM Elements
 const getCurrLoc = document.getElementById("get-location");
 const latEl = document.getElementById("lat");
@@ -17,7 +19,9 @@ const optionContainer = document.querySelector(".custom-select");
 const listItem = document.querySelectorAll(".listItem");
 
 // API Key (imported from config.js)
-import { key } from "./config.js";
+// import { key } from "./config.js";
+
+console.log(process.env.API_KEY);
 
 // Initialize elements' visibility
 topContainer.classList.add("hidden");
