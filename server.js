@@ -17,8 +17,7 @@ const optionContainer = document.querySelector(".custom-select");
 const listItem = document.querySelectorAll(".listItem");
 
 // API Key (imported from config.js)
-const key = process.env.key;
-console.log(key);
+import {key} from "./config.js";
 
 
 // Initialize elements' visibility
