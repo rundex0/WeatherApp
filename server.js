@@ -17,7 +17,27 @@ const optionContainer = document.querySelector(".custom-select");
 const listItem = document.querySelectorAll(".listItem");
 
 // API Key (imported from config.js)
-import {key} from "./config.js";
+// import {key} from "./config.js";
+
+let apiKey; // Declare the apiKey variable
+
+// Change this line in server.js
+const url = 'http://localhost:3000/api/getApiKey';
+
+// Rest of your code...
+
+// Make the API request to your server
+fetch(url)
+  .then((response) => response.json())
+  .then((data) => {
+    apiKey = data.apiKey; // Store the API key in the variable
+
+    // Rest of your client-side code...
+  })
+  .catch((error) => {
+    console.error('Error fetching API key:', error);
+  });
+
 
 
 // Initialize elements' visibility
@@ -97,7 +117,7 @@ function getCityWeather() {
 
   let lang = "en";
   let units = "imperial";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=${units}`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${units}`;
 
   fetch(url)
     .then((resp) => {
@@ -132,7 +152,7 @@ function getWeatherCoord(ev) {
 
   let lang = "en";
   let units = "imperial";
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}&lang=${lang}`;
 
   fetch(url)
     .then((resp) => {
