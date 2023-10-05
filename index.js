@@ -18,7 +18,14 @@ const listItem = document.querySelectorAll(".listItem");
 
 // API Key
 let apiKey;
-const url = 'http://localhost:3000/api/getApiKey';
+let apiUrl;
+
+// Check if running in a production environment (using a custom environment variable)
+if (process.env.NODE_ENV === 'production') {
+  apiUrl = 'https://weather-app-sigma-ashen-47.vercel.app/api/getApiKey'; // Replace with your actual domain
+} else {
+  apiUrl = 'http://localhost:3000/api/getApiKey'; // Development environment URL
+}
 
 // Make the API request to your server
 fetch(url)
