@@ -2,20 +2,18 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv');
-const express = require('express'); // Import Express.js
-const cors = require('cors'); // Import the cors middleware
+const express = require('express');
+const cors = require('cors');
 
 dotenv.config();
 
 const apiKey = process.env.API_KEY;
-
-// Create an Express.js app
 const app = express();
+const hostname = process.env.HOST || 'localhost'; // Use environment variable or default to localhost
+const port = process.env.PORT || 3000; // Use environment variable or default to 3000
 
-// Use the cors middleware to allow requests from localhost:5500
 app.use(cors());
 
-// Serve static files (HTML, JavaScript, CSS)
 app.get('/', (req, res) => {
   const filePath = 'index.html'; // Default to index.html
   const contentType = getContentType(filePath);
@@ -31,18 +29,17 @@ app.get('/', (req, res) => {
   });
 });
 
-// Define your API endpoint
 app.get('/api/getApiKey', (req, res) => {
   res.json({ apiKey: apiKey });
 });
 
-// Start the server on port 3000
 const server = http.createServer(app);
-server.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+
+// Update the server to listen on the specified hostname and port
+server.listen(port, hostname, () => {
+  console.log(`Server is running on http://${hostname}:${port}`);
 });
 
-// Helper function to determine content type based on file extension
 function getContentType(filePath) {
   const extname = path.extname(filePath);
   switch (extname) {
