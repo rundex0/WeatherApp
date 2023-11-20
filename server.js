@@ -14,6 +14,11 @@ const port = process.env.PORT || 3000; // Use environment variable or default to
 
 app.use(cors());
 
+// Serve styles.css before the default route
+app.get('/styles.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'styles.css'), { 'Content-Type': 'text/css' });
+});
+
 app.get('/', (req, res) => {
   const filePath = 'index.html'; // Default to index.html
   const contentType = getContentType(filePath);
