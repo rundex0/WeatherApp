@@ -41,6 +41,13 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/index.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.js'), { 'Content-Type': 'text/javascript' });
+});
+res.sendFile(path.join(__dirname, 'index.js'), { 'Content-Type': 'text/javascript' });
+
+
+
 app.get('/api/getApiKey', (req, res) => {
   res.json({ apiKey: apiKey });
 });
