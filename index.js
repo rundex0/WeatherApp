@@ -18,7 +18,7 @@ const listItem = document.querySelectorAll(".listItem");
 
 // API Key
 let apiKey;
-const url = 'https://weather-app-sigma-ashen-47.vercel.app/api/getApiKey';
+const url = 'https://weather-app-nathan-fc88e5ad857a.herokuapp.com/api/getApiKey';
 
 
 // Make the API request to your server

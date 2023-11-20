@@ -26,6 +26,10 @@ app.get('/styles.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'styles.css'), { 'Content-Type': 'text/css' });
 });
 
+app.get('/index.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.js'), { 'Content-Type': 'text/javascript' });
+});
+
 app.get('/', (req, res) => {
   const filePath = 'index.html'; // Default to index.html
   const contentType = getContentType(filePath);
