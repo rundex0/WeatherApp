@@ -14,6 +14,13 @@ const port = process.env.PORT || 3000; // Use environment variable or default to
 
 app.use(cors());
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/logos', express.static(path.join(__dirname, 'logos')));
+app.use('/open-weather-symbols', express.static(path.join(__dirname, 'open-weather-symbols')));
+app.use('/weather-backgrounds', express.static(path.join(__dirname, 'weather-backgrounds')));
+
+
+
 // Serve styles.css before the default route
 app.get('/styles.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'styles.css'), { 'Content-Type': 'text/css' });
