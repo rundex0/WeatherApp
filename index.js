@@ -17,7 +17,7 @@ const optionContainer = document.querySelector(".custom-select");
 const listItem = document.querySelectorAll(".listItem");
 
 // API Key
-const apiKey = process.env.API_KEY;
+let apiKey;
 const url = 'https://weather-app-nathan-fc88e5ad857a.herokuapp.com/api/getApiKey';
 
 
