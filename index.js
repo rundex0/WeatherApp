@@ -18,18 +18,18 @@ const listItem = document.querySelectorAll(".listItem");
 
 // API Key
 const apiKey = process.env.API_KEY;
-// const url = 'https://weather-app-nathan-fc88e5ad857a.herokuapp.com/api/getApiKey';
+const url = 'https://weather-app-nathan-fc88e5ad857a.herokuapp.com/api/getApiKey';
 
 
 // Make the API request to your server
-// fetch(url)
-//   .then((response) => response.json())
-//   .then((data) => {
-//     apiKey = data.apiKey;
-//   })
-//   .catch((error) => {
-//     console.error('Error fetching API key:', error);
-//   });
+fetch(url)
+  .then((response) => response.json())
+  .then((data) => {
+    apiKey = data.apiKey;
+  })
+  .catch((error) => {
+    console.error('Error fetching API key:', error);
+  });
 
 // Initialize elements' visibility
 topContainer.classList.add("hidden");
