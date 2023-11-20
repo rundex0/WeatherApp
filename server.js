@@ -36,8 +36,8 @@ app.get('/api/getApiKey', (req, res) => {
 const server = http.createServer(app);
 
 // Update the server to listen on the specified hostname and port
-server.listen(port, hostname, () => {
-  console.log(`Server is running on http://${hostname}:${port}`);
+server.listen(port, () => {
+  console.log(`Server is running on ${port}`);
 });
 
 function getContentType(filePath) {
